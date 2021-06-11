@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.2</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>EfficientControls</PackageId>
+    <Authors>FriendlySync</Authors>
+    <Company>FriendlySync</Company>
+    <Product>EfficientControls</Product>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Description>Best controls for Xamarin Forms. Work on all platforms supported by Xamarin now and in the future. Good looking. Are only a few KB in size. Released under MIT license.</Description>
+    <Copyright>Akruto, Inc.</Copyright>
+    <PackageIcon>icon.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="src\circle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="src\circle.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="src\Switch.xaml.cs">
+      <DependentUpon>Switch.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="EfficientControls.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

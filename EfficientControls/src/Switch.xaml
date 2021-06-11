@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid x:Class="EfficientControls.Switch"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="grdMain">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="Auto"/>
+    </Grid.ColumnDefinitions>
+    <Label x:Name="lbSwitch" Text="Switch text can be here" TextColor="Green" VerticalOptions="Center" Grid.Column="0" Margin="0,0,5,0"></Label>
+    <Frame x:Name="frSwitch" CornerRadius="9" BackgroundColor="AliceBlue" Padding="1" Margin="0" Grid.Column="1" VerticalOptions="FillAndExpand">
+        <Frame.GestureRecognizers>
+            <TapGestureRecognizer Tapped="ChangeSwitch"/>
+        </Frame.GestureRecognizers>
+        <Grid x:Name="grSwitch" Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0" VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="imSwitch" Grid.Column="1" Margin="2" VerticalOptions="Center" HeightRequest="12" Aspect="AspectFit"/>
+        </Grid>
+    </Frame>
+    <Label x:Name="lbSwitchState"  Grid.Column="2" Margin="5,0,0,0" VerticalOptions="Center" Text="Off"></Label>
+</Grid>

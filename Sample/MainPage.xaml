@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ec="clr-namespace:EfficientControls;assembly=EfficientControls"
+             x:Class="Sample.MainPage" BackgroundColor="White">
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0" Grid.Row="0">
+            <Label Text="Efficient controls" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Label Text="Switch" FontSize="Title" TextColor="Black" Grid.Row="1" Margin="10,0,0,0" Padding="0"/>
+        <ec:Switch Grid.Row="2" x:Name="ecsSample" TextColor="Black" BorderColor="Black" BackgroundSwitchOn="Transparent" BackgroundSwitchOff="#B0B0B0" Text="Label for switch" Switched="False" SwitchBackWidth="50" SwitchFrontWidth="15" Margin="8" ImageHeight="20" HeightRequest="40"></ec:Switch>
+        <StackLayout Orientation="Vertical" Grid.Row="3" Margin="10,0,0,0" Padding="0">
+            <Label Text="CustomLayout" TextColor="Black" FontSize="Title" Padding="0"/>
+            <ec:AnimationContainer x:Name="clFilesAndFolders" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            </ec:AnimationContainer>
+            <Button Text="Set content" TextColor="Black" Clicked="SetContent_Clicked"/>
+            <Button Text="Slide from left" TextColor="Black" Clicked="SlideLeft_Clicked"/>
+            <Button Text="Slide from right" TextColor="Black" Clicked="SlideRight_Clicked"/>
+        </StackLayout>
+    </Grid>
+    
+</ContentPage>
