@@ -94,6 +94,7 @@ Task("Build")
       MSBuild(solutionFullPath, settings => {
         settings.SetConfiguration(configuration);
         settings.UseToolVersion(MSBuildToolVersion.VS2019);
+        settings.WithProperty("ContinuousIntegrationBuild", "true");
       });
 });
 
