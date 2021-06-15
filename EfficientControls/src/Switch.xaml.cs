@@ -11,8 +11,12 @@ namespace EfficientControls
 {
     public sealed partial class Switch : Grid
     {
-        public delegate void SwitchEventHandler(object sender, EventArgs e);
-        public event SwitchEventHandler switchEventHandler;
+        public delegate void SwitchingEventHandler(object sender, SwitchingEventArgs e);
+        public delegate void SwitchedEventHandler(object sender, EventArgs e);
+
+        public event SwitchingEventHandler SwitchingEvent;
+        public event SwitchedEventHandler SwitchedEvent;
+
         public Switch()
         {
             this.InitializeComponent();
@@ -202,8 +206,19 @@ namespace EfficientControls
         public void ChangeSwitch(object sender, EventArgs e)
         {
             bool switched = !Switched;
+
+            SwitchingEventArgs args = new SwitchingEventArgs();
+            args.Cancel = false;
+            args.NewValue = switched;
+
+            SwitchingEvent?.Invoke(this, args);
+            if (args.Cancel)
+            {
+                return;
+            }
+
             Switched = switched;
-            switchEventHandler?.Invoke(this, EventArgs.Empty);
+            SwitchedEvent?.Invoke(this, EventArgs.Empty);
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
@@ -303,5 +318,11 @@ namespace EfficientControls
             ColumnDefinitionCollection columns = grSwitch.ColumnDefinitions;
             columns[0].Width = width;
         }
+    }
+
+    public class SwitchingEventArgs
+    {
+        public bool NewValue { get; set; }
+        public bool Cancel { get; set; }
     }
 }

@@ -15,7 +15,20 @@
             <Label Text="Efficient controls" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <Label Text="Switch" FontSize="Title" TextColor="Black" Grid.Row="1" Margin="10,0,0,0" Padding="0"/>
-        <ec:Switch Grid.Row="2" x:Name="ecsSample" TextColor="Black" BorderColor="Black" BackgroundSwitchOn="Transparent" BackgroundSwitchOff="#B0B0B0" Text="Label for switch" Switched="False" SwitchBackWidth="50" SwitchFrontWidth="15" Margin="8" ImageHeight="20" HeightRequest="40"></ec:Switch>
+        <ec:Switch Grid.Row="2" x:Name="ecsSample"
+                   TextColor="Black"
+                   BorderColor="Black"
+                   BackgroundSwitchOn="Transparent"
+                   BackgroundSwitchOff="#B0B0B0"
+                   Text="Label for switch" Switched="False"
+                   SwitchBackWidth="50"
+                   SwitchFrontWidth="15"
+                   Margin="8"
+                   ImageHeight="20"
+                   HeightRequest="40"
+                   SwitchedEvent="ecsSample_SwitchedEvent"
+                   SwitchingEvent="ecsSample_SwitchingEvent">
+        </ec:Switch>
         <StackLayout Orientation="Vertical" Grid.Row="3" Margin="10,0,0,0" Padding="0">
             <Label Text="CustomLayout" TextColor="Black" FontSize="Title" Padding="0"/>
             <ec:AnimationContainer x:Name="clFilesAndFolders" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

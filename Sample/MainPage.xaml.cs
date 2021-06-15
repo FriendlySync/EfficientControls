@@ -54,5 +54,15 @@ namespace Sample
             btn.TextColor = Color.Black;
             clFilesAndFolders.SlideFromRight(btn, 3000);
         }
+
+        private void ecsSample_SwitchedEvent(object sender, EventArgs e)
+        {
+            Console.WriteLine("ecsSample_SwitchedEvent");
+        }
+
+        private void ecsSample_SwitchingEvent(object sender, EfficientControls.SwitchingEventArgs e)
+        {
+            Console.WriteLine("ecsSample_SwitchingEvent");
+        }
     }
 }
