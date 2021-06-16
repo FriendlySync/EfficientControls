@@ -35,6 +35,25 @@ namespace EfficientControls
             lbSwitchState.TextColor = TextColor;
         }
 
+        public Switch(bool defaultSwitchValue)
+        {
+            this.InitializeComponent();
+            Switched = defaultSwitchValue;
+            ColumnDefinitionCollection columnsMain = grdMain.ColumnDefinitions;
+            columnsMain[1].Width = SwitchBackWidth;
+            imSwitch.Source = ImageSource.FromResource("EfficientControls.src.circle.png", Assembly.GetExecutingAssembly());
+            lbSwitch.Text = Text;
+            lbSwitch.TextColor = TextColor;
+            frSwitch.BackgroundColor = Switched ? BackgroundSwitchOn : BackgroundSwitchOff;
+            ColumnDefinitionCollection columns = grSwitch.ColumnDefinitions;
+            columns[0].Width = Switched ? (SwitchBackWidth - SwitchFrontWidth - Math.Round(frSwitch.Padding.Left) - Math.Round(frSwitch.CornerRadius / 2)) : 0;
+            frSwitch.WidthRequest = SwitchBackWidth;
+            imSwitch.WidthRequest = SwitchFrontWidth;
+            frSwitch.BorderColor = BorderColor;
+            lbSwitchState.Text = Switched ? SwitchOnText : SwitchOffText;
+            lbSwitchState.TextColor = TextColor;
+        }
+
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(Switch), "", Xamarin.Forms.BindingMode.OneWay);
         public string Text
         {

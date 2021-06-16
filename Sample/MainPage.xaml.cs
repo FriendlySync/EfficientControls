@@ -20,6 +20,11 @@ namespace Sample
             btn.Text = "First";
             btn.TextColor = Color.Black;
             clFilesAndFolders.SetView(btn);
+            EfficientControls.Switch switchEl = new EfficientControls.Switch(true);
+            switchEl.Text = "Switch with new constructor";
+            switchEl.Margin = new Thickness(10,0,0,0);
+            slForGenerateSwitch.Children.Add(switchEl);
+
         }
 
         private void SetContent_Clicked(object sender, EventArgs e)
