@@ -9,6 +9,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0" Grid.Row="0">
@@ -29,7 +30,8 @@
                    SwitchedEvent="ecsSample_SwitchedEvent"
                    SwitchingEvent="ecsSample_SwitchingEvent">
         </ec:Switch>
-        <StackLayout Orientation="Vertical" Grid.Row="3" Margin="10,0,0,0" Padding="0">
+        <StackLayout Grid.Row="3" x:Name="slForGenerateSwitch"></StackLayout>
+        <StackLayout Orientation="Vertical" Grid.Row="4" Margin="10,0,0,0" Padding="0">
             <Label Text="CustomLayout" TextColor="Black" FontSize="Title" Padding="0"/>
             <ec:AnimationContainer x:Name="clFilesAndFolders" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             </ec:AnimationContainer>

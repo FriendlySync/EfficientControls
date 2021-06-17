@@ -17,6 +17,8 @@ namespace EfficientControls
         public event SwitchingEventHandler SwitchingEvent;
         public event SwitchedEventHandler SwitchedEvent;
 
+        public static bool? defaultSwitchValue = null;
+
         public Switch()
         {
             this.InitializeComponent();
@@ -33,6 +35,26 @@ namespace EfficientControls
             frSwitch.BorderColor = BorderColor;
             lbSwitchState.Text = Switched ? SwitchOnText : SwitchOffText;
             lbSwitchState.TextColor = TextColor;
+        }
+
+        public Switch(bool switchValue)
+        {
+            defaultSwitchValue = switchValue;
+            this.InitializeComponent();
+            ColumnDefinitionCollection columnsMain = grdMain.ColumnDefinitions;
+            columnsMain[1].Width = SwitchBackWidth;
+            imSwitch.Source = ImageSource.FromResource("EfficientControls.src.circle.png", Assembly.GetExecutingAssembly());
+            lbSwitch.Text = Text;
+            lbSwitch.TextColor = TextColor;
+            frSwitch.BackgroundColor = switchValue ? BackgroundSwitchOn : BackgroundSwitchOff;
+            ColumnDefinitionCollection columns = grSwitch.ColumnDefinitions;
+            columns[0].Width = switchValue ? (SwitchBackWidth - SwitchFrontWidth - Math.Round(frSwitch.Padding.Left) - Math.Round(frSwitch.CornerRadius / 2)) : 0;
+            frSwitch.WidthRequest = SwitchBackWidth;
+            imSwitch.WidthRequest = SwitchFrontWidth;
+            frSwitch.BorderColor = BorderColor;
+            lbSwitchState.Text = switchValue ? SwitchOnText : SwitchOffText;
+            lbSwitchState.TextColor = TextColor;
+            Switched = switchValue;
         }
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(Switch), "", Xamarin.Forms.BindingMode.OneWay);
@@ -206,6 +228,7 @@ namespace EfficientControls
         public void ChangeSwitch(object sender, EventArgs e)
         {
             bool switched = !Switched;
+            defaultSwitchValue = null;
 
             SwitchingEventArgs args = new SwitchingEventArgs();
             args.Cancel = false;
@@ -236,6 +259,10 @@ namespace EfficientControls
             }
             if (propertyName == SwitchedProperty.PropertyName)
             {
+                if (Switched == defaultSwitchValue)
+                {
+                    return;
+                }
                 ColumnDefinitionCollection columns = grSwitch.ColumnDefinitions;
                 double curWidth = columns[0].Width.Value;
                 double newWidth = Switched ? (SwitchBackWidth - SwitchFrontWidth - Math.Round(frSwitch.Padding.Left) - Math.Round(frSwitch.CornerRadius / 2)) : 0;
